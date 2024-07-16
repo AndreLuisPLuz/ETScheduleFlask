@@ -8,7 +8,7 @@ routes_bp = Blueprint("routes", __name__)
 # Importação de Controllers
 
 from src.controllers.students_avaliation_graph import StudentsAvaliationGraph
-from src.controllers.disciplines_competences import DsiciplinesCompetencesGraph
+from src.controllers.disciplines_competences import DisciplinesCompetencesGraph
 
 # Importação de Repositorios
 
@@ -45,7 +45,7 @@ def disciplines_competences(ProfileId):
     courses_repository = CoursesRepository(conn)
     student_competences_repository = StudentCompetencesRepository(conn)
 
-    controller = DsiciplinesCompetencesGraph(profile_repository, disciplines_repository, competences_repository, courses_repository, student_competences_repository)
+    controller = DisciplinesCompetencesGraph(profile_repository, disciplines_repository, competences_repository, courses_repository, student_competences_repository)
     response =  controller.find_disciplines_competences(ProfileId)
 
     return jsonify(response["body"]), response["status_code"]

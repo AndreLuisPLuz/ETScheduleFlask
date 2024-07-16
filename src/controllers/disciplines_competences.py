@@ -1,7 +1,7 @@
 from typing import Dict
 import numpy as np
 
-class DsiciplinesCompetencesGraph:
+class DisciplinesCompetencesGraph:
     def __init__(self, profile_repository, disciplines_repository, competences_repository, courses_repository, student_competences_repository) -> None:
         self.__profile_repository = profile_repository
         self.__disciplines_repository = disciplines_repository
