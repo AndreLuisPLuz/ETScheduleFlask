@@ -6,10 +6,10 @@ class StudentAvaliationRepository:
         self.__conn = conn
 
     
-    def find_avaliations_by_id(self, profile_id: str) -> List[Dict]:
+    def find_avaliations_by_id(self, profile_id) -> List[Dict]:
         cursor = self.__conn.cursor()
         cursor.execute(
-            '''SELECT * FROM StudentAvaliation WHERE student_id = ?''', (profile_id,)
+            '''SELECT * FROM students_avaliation WHERE student_id = ?''', (profile_id,)
         )
         avaliations = cursor.fetchall()
         return avaliations
