@@ -40,13 +40,13 @@ class DisciplinesCompetencesGraph:
                     weight = competence[3]
                     degree = student_competences[3]
 
-                    if degree == 'apto':
+                    if degree == 'apt':
                         competence_values.append(1)  
                         competence_weights.append(weight)
-                    elif degree == 'desenvolvimento':
+                    elif degree == 'progress':
                         competence_values.append(0.5) 
                         competence_weights.append(weight)
-                    elif degree == 'inapto':
+                    elif degree == 'inapt':
                         competence_values.append(0)
                         competence_weights.append(weight)
 

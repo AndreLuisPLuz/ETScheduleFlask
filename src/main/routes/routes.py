@@ -1,4 +1,5 @@
 from flask import jsonify, Blueprint, request
+from flask_jwt_extended  import jwt_required
 
 #jsonify: tranformas as respostas em json para o usuário
 #Blueprint: ajuda a dar um nome bacana para a rotas para saber melhor a que ela se refere
@@ -9,6 +10,7 @@ routes_bp = Blueprint("routes", __name__)
 
 from src.controllers.students_avaliation_graph import StudentsAvaliationGraph
 from src.controllers.disciplines_competences import DisciplinesCompetencesGraph
+from src.controllers.server_auth import ServerAuth
 
 # Importação de Repositorios
 
@@ -18,13 +20,36 @@ from src.models.repositories.courses_repository import CoursesRepository
 from src.models.repositories.disciplines_repository import DisciplinesRepository
 from src.models.repositories.competences_repository import CompetencesRepository
 from src.models.repositories.student_competences_repository import StudentCompetencesRepository
+from src.models.repositories.users_repository import UsersRepository
 
 # Importação de gerente de conexões
 
 from src.models.settings.db_connection_handler import db_connection_handler
 
 
+@routes_bp.route("/firts_access", methods=["POST"])
+def firts_access():
+    conn = db_connection_handler.get_connection()
+    users_repository = UsersRepository(conn)
+
+    controller = ServerAuth(users_repository)
+    response =  controller.firts_access(request.json)
+
+    return jsonify(response["body"]), response["status_code"]
+
+@routes_bp.route("/auth", methods=["POST"])
+def auth():
+    conn = db_connection_handler.get_connection()
+    users_repository = UsersRepository(conn)
+
+    controller = ServerAuth(users_repository)
+    response =  controller.auth(request.json)
+
+    return jsonify(response["body"]), response["status_code"]
+
+
 @routes_bp.route("/students-avaliation/<ProfileId>", methods=["GET"])
+@jwt_required()
 def students_avaliation_hard_and_soft_skills(ProfileId):
     conn = db_connection_handler.get_connection()
     students_avaliation_repository = StudentAvaliationRepository(conn)
@@ -37,6 +62,7 @@ def students_avaliation_hard_and_soft_skills(ProfileId):
     return jsonify(response["body"]), response["status_code"]
 
 @routes_bp.route("/disciplines-competences/<ProfileId>", methods=["GET"])
+@jwt_required()
 def disciplines_competences(ProfileId):
     conn = db_connection_handler.get_connection()
     profile_repository = ProfileRepository(conn)
