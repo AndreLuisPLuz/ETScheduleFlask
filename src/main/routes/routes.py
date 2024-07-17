@@ -37,13 +37,13 @@ def firts_access():
 
     return jsonify(response["body"]), response["status_code"]
 
-@routes_bp.route("/auth", methods=["POST"])
-def auth():
+@routes_bp.route("/login", methods=["POST"])
+def login():
     conn = db_connection_handler.get_connection()
     users_repository = UsersRepository(conn)
 
     controller = ServerAuth(users_repository)
-    response =  controller.auth(request.json)
+    response =  controller.login(request.json)
 
     return jsonify(response["body"]), response["status_code"]
 

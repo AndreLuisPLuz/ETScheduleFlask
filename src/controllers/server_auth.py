@@ -1,9 +1,6 @@
 from typing import Dict
 from flask_bcrypt import generate_password_hash, check_password_hash
-from flask_jwt_extended import create_access_token, get_jwt_identity
-
-
-
+from flask_jwt_extended import create_access_token
 
 class ServerAuth:
     def __init__(self, users_repository) -> None:
@@ -32,7 +29,7 @@ class ServerAuth:
                 "status_code": 400 
             }
         
-    def auth(self, body, ) -> Dict:
+    def login(self, body, ) -> Dict:
         try:
             user = self.__users_repository.get_user_by_username(body['username'])
 
@@ -47,7 +44,8 @@ class ServerAuth:
             return {
                 "body": { "token": access_token },
                 "status_code": 200 
-            } 
+            }
+            
         except Exception as exception:
             return {
                 "body": { "error": "Bad Request", "message": str(exception) },

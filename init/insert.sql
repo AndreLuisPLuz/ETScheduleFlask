@@ -91,17 +91,23 @@ VALUES
 
 INSERT INTO students_avaliation (discipline_id, student_id, comment) 
 VALUES
-	(1, 1, 'Impressive skills in developing robust and dynamic user interfaces with React, showcasing expertise in state management and component-based architecture.'),
-	(1, 2, 'Impressive skills in developing robust and dynamic user interfaces with React, showcasing expertise in state management and component-based architecture.'),
+    -- Habilidades Interpessoais e de Comunicação
+    (1, 1, 'Demonstrates strong interpersonal skills and effective communication, contributing positively to team projects and client interactions.'),
+    (1, 2, 'Exhibits leadership qualities and excellent collaboration skills, fostering a cohesive team environment during project execution.'),
 
-	(2, 1, 'Solid foundation in programming with Java, demonstrating proficiency in object-oriented programming concepts and application development, with a focus on scalability and performance.'),
-	(2, 2, 'Solid foundation in programming with Java, demonstrating proficiency in object-oriented programming concepts and application development, with a focus on scalability and performance.'),
+    -- Habilidades de Pensamento Crítico e Resolução de Problemas
+    (2, 1, 'Applies critical thinking and problem-solving skills to address complex programming challenges, ensuring efficient and scalable solutions.'),
+    (2, 2, 'Demonstrates strategic thinking and analytical prowess in Java application development, focusing on optimizing performance and code quality.'),
 
-	(3, 1, 'Strong capability in web development using Python and its libraries, showcasing versatility in backend development, data analysis, and scripting tasks.'),
-	(3, 2, 'Strong capability in web development using Python and its libraries, showcasing versatility in backend development, data analysis, and scripting tasks.'),
+    -- Habilidades de Autogestão e Eficiência Pessoal
+    (3, 1, 'Manages time effectively and demonstrates resilience in meeting project deadlines and overcoming obstacles in Python web development tasks.'),
+    (3, 2, 'Shows initiative and adaptability in handling diverse scripting and backend development tasks using Python and its libraries.'),
 
-	(4, 1, 'Strong capability in database management and querying, adept at crafting efficient and effective SQL queries for data manipulation and analysis.'),
-	(4, 1, 'Strong capability in database management and querying, adept at crafting efficient and effective SQL queries for data manipulation and analysis.');
+    -- Habilidades Criativas e Inovadoras
+    (4, 1, 'Applies creativity and problem sensitivity to design efficient database schemas and optimize SQL queries for data manipulation and analysis.'),
+    (4, 2, 'Incorporates imaginative solutions and artistic skills in database management, ensuring data integrity and performance optimization.');
+
+
 
 
 	-- Select all rows from users table
