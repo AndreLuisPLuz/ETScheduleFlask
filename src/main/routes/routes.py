@@ -27,7 +27,7 @@ from src.models.repositories.users_repository import UsersRepository
 from src.models.settings.db_connection_handler import db_connection_handler
 
 
-@routes_bp.route("/firts_access", methods=["POST"])
+@routes_bp.route("/first_access", methods=["POST"])
 def firts_access():
     conn = db_connection_handler.get_connection()
     users_repository = UsersRepository(conn)
@@ -48,7 +48,7 @@ def login():
     return jsonify(response["body"]), response["status_code"]
 
 
-@routes_bp.route("/students-avaliation/<ProfileId>", methods=["GET"])
+@routes_bp.route("/hard-soft-skills/<ProfileId>", methods=["GET"])
 @jwt_required()
 def students_avaliation_hard_and_soft_skills(ProfileId):
     conn = db_connection_handler.get_connection()
@@ -61,7 +61,7 @@ def students_avaliation_hard_and_soft_skills(ProfileId):
 
     return jsonify(response["body"]), response["status_code"]
 
-@routes_bp.route("/disciplines-competences/<ProfileId>", methods=["GET"])
+@routes_bp.route("/disciplines-average/<ProfileId>", methods=["GET"])
 @jwt_required()
 def disciplines_competences(ProfileId):
     conn = db_connection_handler.get_connection()
