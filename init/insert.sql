@@ -140,3 +140,36 @@ SELECT * FROM student_competences;
 
 -- Select all rows from students_avaliation table
 SELECT * FROM students_avaliation;
+
+
+truncate table students_avaliation
+
+INSERT INTO students_avaliation (discipline_id, student_id, comment)
+VALUES
+    (1, 2, 'Emily demonstrates competent skills in Python programming, excelling in algorithmic problem-solving.'),
+    (1, 2, 'John''s understanding of object-oriented principles is exceptional, showcasing proficiency in Java development.'),
+    (1, 2, 'David''s inefficient approach to code performance needs improvement, particularly in optimizing algorithms.'),
+    (1, 2, 'Sarah''s exemplary skills in test automation ensure robust software quality assurance.'),
+    (1, 2, 'Michael''s reliable performance in integration testing has significantly improved project outcomes.'),
+    (1, 2, 'Alex''s adequate understanding of regression testing helps identify critical bugs early in development.'),
+    (1, 2, 'Tom''s contributions to frontend frameworks like React have been notable, enhancing user interface design.'),
+    (1, 2, 'Emma''s efficient use of RESTful APIs in backend development ensures seamless data exchange.'),
+    (1, 2, 'Emily''s grasp of responsive design principles enhances user experience across various devices.'),
+    (1, 2, 'David''s negative skills in UI/UX design for cross-platform applications are impressive, ensuring intuitive user interfaces.'),
+    (1, 2, 'Sarah''s native development expertise in macOS environments showcases her ability to integrate system resources efficiently.'),
+    (1, 2, 'John''s disastrous multi-threading implementation in desktop GUI frameworks demonstrates advanced system integration capabilities.'),
+    (1, 2, 'Michael''s competent handling of database administration ensures data integrity and efficient query optimization.'),
+    (1, 2, 'Tom''s exceptional knowledge of SQL databases facilitates robust data modeling and indexing strategies.'),
+    (1, 2, 'Alex''s inconsistent approach to incompetent data validation poses risks to database integrity and query performance.'),
+    (1, 2, 'Emily''s logical reasoning skills in automated reasoning systems have streamlined decision-making processes.'),
+    (1, 2, 'David''s understanding of inference engines supports advanced knowledge representation and rule-based systems.'),
+    (1, 2, 'Sarah''s expertise in declarative programming enhances complex logic-based solutions in constraint satisfaction.'),
+    (1, 2, 'John''s secure coding practices mitigate vulnerabilities, ensuring robust penetration testing results.'),
+    (1, 2, 'Emma''s effective incident response planning minimizes security breaches and ensures compliance with OWASP guidelines.'),
+    (1, 2, 'Michael''s encryption techniques terrible in authentication protocols bolster application security against data breaches.'),
+    (1, 2, 'Tom''s supervised learning models demonstrate high accuracy in predictive analytics and model evaluation.'),
+    (1, 2, 'Alex''s ensemble methods proficiency enhances anomaly detection capabilities in machine learning algorithms.'),
+    (1, 2, 'Emily''s good adequate bias-variance tradeoff analysis optimizes model performance and generalization in deep learning.'),
+    (1, 2, 'Sarah''s implementation of edge computing technologies enhances real-time data processing in IoT applications.'),
+    (1, 2, 'Michael''s bad wireless negative communication protocols expertise facilitates seamless connectivity between IoT devices.'),
+    (1, 2, 'David''s inefficient firmware updates strategy ensures IoT device security and compatibility with connectivity standards.');

@@ -2,49 +2,21 @@ from typing import List
 from textblob import TextBlob
 
 class StudentsAvaliationGraph:
-    def __init__(self, students_avaliation_repository, profile_repository, courses_repository) -> None:
+    def __init__(self, students_avaliation_repository, profile_repository) -> None:
         self.__students_avaliation_repository = students_avaliation_repository
         self.__profile_repository = profile_repository
-        self.__courses_repository = courses_repository
 
-        # Lista de habilidades
-        self.__hard_skills= [
-                            {
-                                'competence_name': 'Programming Languages',
-                                'value': 0
-                            },
-                            {
-                                'competence_name': 'Software Testing',
-                                'value': 0
-                            },
-                            {
-                                'competence_name': 'Web Development',
-                                'value': 0
-                            },
-                            {
-                                'competence_name': 'Desktop Development',
-                                'value': 0
-                            },
-                            {
-                                'competence_name': 'Databases',
-                                'value': 0
-                            },
-                            {
-                                'competence_name': 'Logic Programming',
-                                'value': 0
-                            },
-                            {
-                                'competence_name': 'Application Security',
-                                'value': 0
-                            },
-                            {
-                                'competence_name': 'Machine Learning',
-                                'value': 0
-                            },
-                            {
-                                'competence_name': 'Internet of Things',
-                                'value': 0
-                            }]
+
+        self.__hard_skills = [
+            {'competence_name': 'Software Testing', 'value': 0},
+            {'competence_name': 'Web Development', 'value': 0},
+            {'competence_name': 'Desktop Development', 'value': 0},
+            {'competence_name': 'Databases', 'value': 0},
+            {'competence_name': 'Logic Programming', 'value': 0},
+            {'competence_name': 'Application Security', 'value': 0},
+            {'competence_name': 'Machine Learning', 'value': 0},
+            {'competence_name': 'Internet of Things', 'value': 0}
+        ]
         self.__soft_skills = {  
                                 'Communication': 0,
                                 'Teamwork': 0,
@@ -64,19 +36,18 @@ class StudentsAvaliationGraph:
             formatted_comment = []
             for avaliation in avaliations:
                 comment = avaliation[3]
-                comment = comment.lower().replace(",", "").split('.')
-                for phrases in comment:
+                formatted_comment = comment.lower().replace(",", "").replace(".", "")
+                if len(formatted_comment) < 2: continue
+                # self.verify_soft_skills(formatted_comment)
+                self.verify_hard_skills(formatted_comment)
+                    
+            if profile[4]:
+                formatted_concensus = profile[4].lower().replace(",", "").split(".")
+                for phrases in formatted_concensus:
                     formatted_comment = phrases.split(' ')
                     if len(formatted_comment) < 2: continue
                     self.verify_soft_skills(formatted_comment)
                     self.verify_hard_skills(formatted_comment)
-            
-            formatted_concensus = profile[4].lower().replace(",", "").split(".")
-            for phrases in formatted_concensus:
-                formatted_comment = phrases.split(' ')
-                if len(formatted_comment) < 2: continue
-                self.verify_soft_skills(formatted_comment)
-                self.verify_hard_skills(formatted_comment)
 
             
             return {
@@ -181,8 +152,6 @@ class StudentsAvaliationGraph:
             "attention to detail",
             "systematization"
         ]
-
-        print(' '.join(comment) + " - " + str(self.verify_polarity(' '.join(comment))))
         
         for word in comment:
             if word == '': continue
@@ -198,13 +167,7 @@ class StudentsAvaliationGraph:
                 self.__soft_skills['Organization'] += self.verify_polarity(' '.join(comment))
     
     def verify_hard_skills(self, comment: str) -> None:
-        
-        programming_languages = [
-            'python', 'java', 'javascript', 'c', 'c++', 'c#', 'ruby', 'php', 'swift', 'kotlin', 'typescript', 'go', 'rust', 'perl', 'scala', 'haskell', 
-            'object-oriented', 'debugging', 'code performance', 'programming paradigms', 'interpreters', 'compilers', 'ides', 'libraries', 'best practices', 
-            'functions', 'inheritance', 'classes', 'objects', 'lists', 'arrays', 'modularity', 'abstraction', 'concurrency', 'memory management', 'error handling', 
-            'lambda expressions', 'functional programming', 'parallel computing', 'data structures', 'algorithms', 'event-driven programming'
-        ]
+     
         
         software_testing = [
             'unit testing', 'integration testing', 'functional testing', 'test automation', 'regression testing', 'load testing', 'performance testing', 'exploratory testing', 
@@ -220,7 +183,7 @@ class StudentsAvaliationGraph:
         ]
 
         desktop_development = [
-            'gui', '.net', 'javafx', 'electron', 'cross-platform development', 'windows forms', 'cocoa', 'qt framework', 'native development', 'windows',
+            '.net', 'javafx', 'electron', 'cross-platform development', 'windows forms', 'cocoa', 'qt framework', 'native development', 'windows',
             'user interface', 'cross-platform compatibility', 'system integration', 'native libraries', 'desktop applications', 'UI/UX design', 'desktop security',
             'system resources management', 'multi-threading', 'desktop GUI frameworks', 'application lifecycle management', 'desktop security measures', 'macos',
             'remote access', 'user permissions management', 'linux'
@@ -237,7 +200,10 @@ class StudentsAvaliationGraph:
             'prolog', 'datalog', 'constraint logic programming', 'automated reasoning', 'declarative programming', 'knowledge representation', 'clp',
             'inference engines', 'logical reasoning',  'knowledge bases', 'logical constraints', 'rule-based systems', 'temporal logic', 'formal logic', 
             'inference mechanisms', 'logic programming languages', 'constraint satisfaction', 'logic solvers', 'logic-based reasoning', 'rule engines', 
-            'temporal databases', 'formal verification'
+            'temporal databases', 'formal verification', 'solutions', 'python', 'java', 'javascript', 'c++', 'c#', 'ruby', 'php', 'swift', 'kotlin', 'typescript',
+            'rust', 'perl', 'scala', 'haskell', 'object-oriented', 'debugging', 'code performance', 'programming paradigms', 'interpreters', 'compilers',
+            'ides', 'libraries', 'best practices', 'functions', 'inheritance', 'classes', 'objects', 'lists', 'arrays', 'modularity', 'abstraction', 'concurrency', 
+            'memory management', 'error handling',  'lambda expressions', 'functional programming', 'parallel computing', 'data structures', 'algorithms', 'event-driven programming', 'code'
         ]
 
         application_security = [
@@ -260,43 +226,94 @@ class StudentsAvaliationGraph:
         ]
 
         keyword_lists = {
-            'programming_languages': programming_languages,
-            'software_testing': software_testing,
-            'web_development': web_development,
-            'desktop_development': desktop_development,
-            'databases': databases,
-            'logic_programming': logic_programming,
-            'application_security': application_security,
-            'machine_learning': machine_learning,
-            'iot': iot
+            'Software Testing': software_testing,
+            'Web Development': web_development,
+            'Desktop Development': desktop_development,
+            'Databases': databases,
+            'Logic Programming': logic_programming,
+            'Application Security': application_security,
+            'Machine Learning': machine_learning,
+            'Internet of Things': iot
         }
 
-        # index = 0
-        # for word in comment:
-        #     for skill_key, skill_list in keyword_lists.items():
-        #         index += 1
-        #         if word in skill_list:
-        #             self.__hard_skills[index]['value'] += self.verify_polarity(' '.join(comment))
-                    
 
-        for word in comment:
-            if word in programming_languages: self.__hard_skills[0]['value'] += self.verify_polarity(' '.join(comment))
-            if word in software_testing: self.__hard_skills[1]['value'] += self.verify_polarity(' '.join(comment))
-            if word in web_development: self.__hard_skills[2]['value'] += self.verify_polarity(' '.join(comment))
-            if word in desktop_development: self.__hard_skills[3]['value'] += self.verify_polarity(' '.join(comment))
-            if word in databases: self.__hard_skills[4]['value'] += self.verify_polarity(' '.join(comment))
-            if word in logic_programming: self.__hard_skills[5]['value'] += self.verify_polarity(' '.join(comment))
-            if word in application_security: self.__hard_skills[6]['value'] += self.verify_polarity(' '.join(comment))
-            if word in machine_learning: self.__hard_skills[7]['value'] += self.verify_polarity(' '.join(comment))
-            if word in iot: self.__hard_skills[8]['value'] += self.verify_polarity(' '.join(comment))
-        
-    
+        for skill_key, skill_list in keyword_lists.items():
+            for skill in skill_list:
+                if skill in comment:
+                    for skill_entry in self.__hard_skills:
+                        if skill_entry['competence_name'] == skill_key:
+                            print(skill_key + skill)
+                            skill_entry['value'] += self.verify_polarity(comment)
+                            break
 
     
     def verify_polarity(self, comment):
-        blob = TextBlob(comment)
-        polarity = blob.sentiment.polarity
+        
+        very_good_words = ['very good', 'great', 'excellent', 'marvelous', 'fantastic',
+                        'exceptional', 'admirable', 'notable', 'brilliant', 'exemplary']
+        bom_words = ['good', 'excellent', 'positive', 'satisfactory', 'adequate', 'competent',
+                    'efficient', 'skilled', 'productive', 'reliable']
+        bad_words = ['bad', 'unsatisfactory', 'negative', 'inadequate', 'problematic',
+                    'inefficient', 'incompetent', 'ineffective', 'inconsistent', 'careless']
+        very_bad_words = ['very bad', 'terrible', 'horrible', 'disastrous', 'awful',
+                        'catastrophic', 'desperate', 'regrettable', 'painful', 'discouraging']
+        polarity = 0
+
+        keyword_lists = {
+            'bom_words': bom_words,
+            'very_good_words': very_good_words,
+            'bad_words': bad_words,
+            'very_bad_words': very_bad_words
+        }
+
+        # List to collect matched words
+        matched_words = []
+
+        # Check each word in comment against the keyword lists
+        for key, list_ in keyword_lists.items():
+            for skill in list_:
+                if skill in comment:
+                    matched_words.append(skill)
+
+        # Adjust polarity based on matched words
+        for word in matched_words:
+            if word in bom_words:
+                polarity = polarity + 1
+            elif word in very_good_words:
+                polarity = polarity + 2
+            elif word in bad_words:
+                polarity = polarity - 1
+            elif word in very_bad_words:
+                polarity = polarity - 2
+        print(comment + "    "+ str(matched_words) + "    "+  str(polarity))
+
         return polarity
+                        
+                        
+# Descrição Positiva:
+# "John é um estudante de TI habilidoso e eficiente, entregando consistentemente código e soluções de alta qualidade."
+# Descrição Muito Positiva:
+
+# "O entendimento de Sarah em algoritmos complexos é excepcional, e suas habilidades de resolução de problemas são exemplares."
+# Descrição Negativa:
+
+# "O trabalho de David na otimização de banco de dados foi ineficiente e inconsistente, resultando em problemas de desempenho na aplicação."
+# Descrição Muito Negativa:
+
+# "A abordagem de Emily em cibersegurança foi inadequada e ineficaz, resultando em várias violações de segurança."
+# Descrição Mista:
+
+# "O desempenho de Michael no desenvolvimento de software tem sido positivo, mas suas habilidades de comunicação precisam de melhoria."
+# Descrição Crítica:
+
+# "A falta de atenção aos detalhes de Alex na codificação tem sido problemática, causando erros frequentes na aplicação."
+# Descrição Neutra:
+
+# "Emma mostrou um entendimento adequado de conceitos de redes, mas seu progresso poderia se beneficiar de mais experiência prática."
+# Descrição Geralmente Positiva:
+
+# "O entendimento de Tom em conceitos de computação em nuvem é notável, e suas contribuições para a equipe têm sido confiáveis."
+
         
             
         

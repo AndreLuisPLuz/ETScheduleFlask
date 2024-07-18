@@ -3,7 +3,7 @@ from pyodbc import Connection
 
 class DbConnectionHandler:
     def __init__(self) -> None:
-        self.__server = 'CA-C-0064N\SQLEXPRESS' #Nome do server 
+        self.__server = 'CA-C-0064X\SQLEXPRESS' #Nome do server 
         self.__database = 'etschedule' #Nome do Database
         
         self.__conn = None
