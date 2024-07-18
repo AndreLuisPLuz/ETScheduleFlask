@@ -49,7 +49,7 @@ def login():
 
 
 @routes_bp.route("/students-avaliation/<ProfileId>", methods=["GET"])
-@jwt_required()
+
 def students_avaliation_hard_and_soft_skills(ProfileId):
     conn = db_connection_handler.get_connection()
     students_avaliation_repository = StudentAvaliationRepository(conn)
@@ -62,7 +62,7 @@ def students_avaliation_hard_and_soft_skills(ProfileId):
     return jsonify(response["body"]), response["status_code"]
 
 @routes_bp.route("/disciplines-competences/<ProfileId>", methods=["GET"])
-@jwt_required()
+
 def disciplines_competences(ProfileId):
     conn = db_connection_handler.get_connection()
     profile_repository = ProfileRepository(conn)

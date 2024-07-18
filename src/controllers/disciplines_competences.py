@@ -12,7 +12,7 @@ class DisciplinesCompetencesGraph:
 
     def find_disciplines_competences(self, profile_id) -> Dict:
         try:
-            disciplines_infos = {}
+            all_disciplines_infos = []
             
 
             profile = self.__profile_repository.find_profile_by_id(profile_id)
@@ -21,6 +21,7 @@ class DisciplinesCompetencesGraph:
             if not disciplines: raise Exception("No Disciplines Found")
 
             for discipline in disciplines:
+                discipline_info = {}
                 competences_info = {}
                 competences_average = 0
 
@@ -59,11 +60,14 @@ class DisciplinesCompetencesGraph:
                 competences_info['semester'] = str(discipline[4])
                 competences_info['competences_average'] = competences_average * 100
 
-                disciplines_infos[discipline_name] = competences_info
+                discipline_info['discipline_name'] = discipline_name
+                discipline_info['stats'] = competences_info
+
+                all_disciplines_infos.append(discipline_info)
             
             return {
                 "body":{ 
-                    "disciplines" : disciplines_infos
+                    "disciplines" : all_disciplines_infos
                 },
                 "status_code": 200
             }
