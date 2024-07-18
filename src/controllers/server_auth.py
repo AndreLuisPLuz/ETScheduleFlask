@@ -34,7 +34,8 @@ class ServerAuth:
             user = self.__users_repository.get_user_by_username(body['username'])
 
             if not user: raise Exception("Username invalid") 
-            if not check_password_hash(user[4], body['password']): 
+            
+            if not check_password_hash(user[5], body['password']): 
                 raise Exception("Password invalid") 
 
             # Gerar o token JWT
