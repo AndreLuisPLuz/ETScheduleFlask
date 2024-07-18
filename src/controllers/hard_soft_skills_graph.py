@@ -1,7 +1,7 @@
 from typing import List
 from textblob import TextBlob
 
-class StudentsAvaliationGraph:
+class HardSoftSkillsGraph:
     def __init__(self, students_avaliation_repository, profile_repository) -> None:
         self.__students_avaliation_repository = students_avaliation_repository
         self.__profile_repository = profile_repository

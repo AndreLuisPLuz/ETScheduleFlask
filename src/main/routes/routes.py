@@ -8,8 +8,8 @@ routes_bp = Blueprint("routes", __name__)
 
 # Importação de Controllers
 
-from src.controllers.students_avaliation_graph import StudentsAvaliationGraph
-from src.controllers.disciplines_competences import DisciplinesCompetencesGraph
+from src.controllers.hard_soft_skills_graph import HardSoftSkillsGraph
+from src.controllers.disciplines_average_graph import DisciplinesAverageGraph
 from src.controllers.server_auth import ServerAuth
 
 # Importação de Repositorios
@@ -55,7 +55,7 @@ def students_avaliation_hard_and_soft_skills(ProfileId):
     students_avaliation_repository = StudentAvaliationRepository(conn)
     profile_repository = ProfileRepository(conn)
 
-    controller = StudentsAvaliationGraph(students_avaliation_repository, profile_repository)
+    controller = HardSoftSkillsGraph(students_avaliation_repository, profile_repository)
     response =  controller.find_avaliations(ProfileId)
 
     return jsonify(response["body"]), response["status_code"]
@@ -70,7 +70,7 @@ def disciplines_competences(ProfileId):
     courses_repository = CoursesRepository(conn)
     student_competences_repository = StudentCompetencesRepository(conn)
 
-    controller = DisciplinesCompetencesGraph(profile_repository, disciplines_repository, competences_repository, courses_repository, student_competences_repository)
+    controller = DisciplinesAverageGraph(profile_repository, disciplines_repository, competences_repository, courses_repository, student_competences_repository)
     response =  controller.find_disciplines_competences(ProfileId)
 
     return jsonify(response["body"]), response["status_code"]

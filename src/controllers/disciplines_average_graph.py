@@ -1,7 +1,7 @@
 from typing import Dict
 import numpy as np
 
-class DisciplinesCompetencesGraph:
+class DisciplinesAverageGraph:
     def __init__(self, profile_repository, disciplines_repository, competences_repository, courses_repository, student_competences_repository) -> None:
         self.__profile_repository = profile_repository
         self.__disciplines_repository = disciplines_repository
@@ -40,8 +40,8 @@ class DisciplinesCompetencesGraph:
                     if not student_competences: raise Exception("No Students Competences Found")
 
                     weight = competence[4]
-                    degree = student_competences[4]
-
+                    degree = student_competences[3]
+                    
                     if degree == 'apt':
                         competence_values.append(1)  
                         competence_weights.append(weight)
