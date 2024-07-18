@@ -17,13 +17,13 @@ class StudentsAvaliationGraph:
             {'competence_name': 'Machine Learning', 'value': 0},
             {'competence_name': 'Internet of Things', 'value': 0}
         ]
-        self.__soft_skills = {  
-                                'Communication': 0,
-                                'Teamwork': 0,
-                                'Initiative': 0,
-                                'Leadership': 0,
-                                'Organization': 0
-                            }
+        self.__soft_skills = [
+            {'competence_name': 'Communication', 'value': 0},
+            {'competence_name': 'Teamwork', 'value': 0},
+            {'competence_name': 'Initiative', 'value': 0},
+            {'competence_name': 'Leadership', 'value': 0},
+            {'competence_name': 'Organization', 'value': 0},
+        ]
 
 
     def find_avaliations(self, profile_id) -> List:
@@ -36,13 +36,14 @@ class StudentsAvaliationGraph:
             formatted_comment = []
             for avaliation in avaliations:
                 comment = avaliation[3]
-                formatted_comment = comment.lower().replace(",", "").replace(".", "")
-                if len(formatted_comment) < 2: continue
-                # self.verify_soft_skills(formatted_comment)
-                self.verify_hard_skills(formatted_comment)
+                if comment:
+                    formatted_comment = comment.lower().replace(",", "").replace(".", "")
+                    if len(formatted_comment) < 2: continue
+                    # self.verify_soft_skills(formatted_comment)
+                    self.verify_hard_skills(formatted_comment)
                     
-            if profile[4]:
-                formatted_concensus = profile[4].lower().replace(",", "").split(".")
+            if profile[3]:
+                formatted_concensus = profile[3].lower().replace(",", "").split(".")
                 for phrases in formatted_concensus:
                     formatted_comment = phrases.split(' ')
                     if len(formatted_comment) < 2: continue
@@ -242,7 +243,7 @@ class StudentsAvaliationGraph:
                 if skill in comment:
                     for skill_entry in self.__hard_skills:
                         if skill_entry['competence_name'] == skill_key:
-                            print(skill_key + skill)
+                            # print(skill_key + skill)
                             skill_entry['value'] += self.verify_polarity(comment)
                             break
 
@@ -285,7 +286,7 @@ class StudentsAvaliationGraph:
                 polarity = polarity - 1
             elif word in very_bad_words:
                 polarity = polarity - 2
-        print(comment + "    "+ str(matched_words) + "    "+  str(polarity))
+        # print(comment + "    "+ str(matched_words) + "    "+  str(polarity))
 
         return polarity
                         

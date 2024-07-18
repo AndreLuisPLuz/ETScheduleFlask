@@ -22,11 +22,10 @@ class UsersRepository:
         cursor.execute( 
             '''
                  INSERT INTO users
-                    (id, username, date_of_birth, full_name, [password])
+                    ( username, date_of_birth, full_name, [password])
                 VALUES
-                    (?, ?, ?, ?, ?)
+                    (?, ?, ?, ?)
             ''' , (
-                user_infos['id'],
                 user_infos['username'],
                 user_infos['date_of_birth'],
                 user_infos['full_name'],

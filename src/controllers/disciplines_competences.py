@@ -17,7 +17,8 @@ class DisciplinesCompetencesGraph:
 
             profile = self.__profile_repository.find_profile_by_id(profile_id)
             if not profile: raise Exception("No Profile Found")
-            disciplines = self.__disciplines_repository.get_disciplines_from_group(profile[2])
+            disciplines = self.__disciplines_repository.get_disciplines_from_group(profile[5])
+
             if not disciplines: raise Exception("No Disciplines Found")
 
             for discipline in disciplines:
@@ -29,7 +30,7 @@ class DisciplinesCompetencesGraph:
                 competences = self.__competences_repository.get_competences_from_disciplines(discipline[0])
                 if not course: raise Exception("No Course Found")
                 if not competences: raise Exception("No Competences Found")
-                discipline_name = str(course[1])
+                discipline_name = str(course[4])
 
                 competence_values = [] 
                 competence_weights = []  
@@ -38,8 +39,8 @@ class DisciplinesCompetencesGraph:
                     student_competences = self.__student_competences_repository.find_competences_by_student_competence(profile[0], competence[0])
                     if not student_competences: raise Exception("No Students Competences Found")
 
-                    weight = competence[3]
-                    degree = student_competences[3]
+                    weight = competence[4]
+                    degree = student_competences[4]
 
                     if degree == 'apt':
                         competence_values.append(1)  
