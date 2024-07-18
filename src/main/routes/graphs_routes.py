@@ -4,7 +4,7 @@ from flask_jwt_extended  import jwt_required
 #jsonify: tranformas as respostas em json para o usuário
 #Blueprint: ajuda a dar um nome bacana para a rotas para saber melhor a que ela se refere
 
-routes_bp = Blueprint("routes", __name__)
+graphs_routes_bp = Blueprint("graphs_routes", __name__)
 
 # Importação de Controllers
 
@@ -27,8 +27,8 @@ from src.models.repositories.users_repository import UsersRepository
 from src.models.settings.db_connection_handler import db_connection_handler
 
 
-@routes_bp.route("/first_access", methods=["POST"])
-def firts_access():
+@graphs_routes_bp.route("/first_access", methods=["POST"])
+def aaaaa():
     conn = db_connection_handler.get_connection()
     users_repository = UsersRepository(conn)
 
@@ -37,8 +37,9 @@ def firts_access():
 
     return jsonify(response["body"]), response["status_code"]
 
-@routes_bp.route("/login", methods=["POST"])
-def login():
+
+@graphs_routes_bp.route("/login", methods=["POST"])
+def bbbbb():
     conn = db_connection_handler.get_connection()
     users_repository = UsersRepository(conn)
 
@@ -48,9 +49,9 @@ def login():
     return jsonify(response["body"]), response["status_code"]
 
 
-@routes_bp.route("/hard-soft-skills/<ProfileId>", methods=["GET"])
-
-def students_avaliation_hard_and_soft_skills(ProfileId):
+@graphs_routes_bp.route("/hard-soft-skills/<ProfileId>", methods=["GET"])
+@jwt_required()
+def cccccc(ProfileId):
     conn = db_connection_handler.get_connection()
     students_avaliation_repository = StudentAvaliationRepository(conn)
     profile_repository = ProfileRepository(conn)
@@ -60,9 +61,9 @@ def students_avaliation_hard_and_soft_skills(ProfileId):
 
     return jsonify(response["body"]), response["status_code"]
 
-@routes_bp.route("/disciplines-average/<ProfileId>", methods=["GET"])
-
-def disciplines_competences(ProfileId):
+@graphs_routes_bp.route("/disciplines-average/<ProfileId>", methods=["GET"])
+@jwt_required()
+def dddddd(ProfileId):
     conn = db_connection_handler.get_connection()
     profile_repository = ProfileRepository(conn)
     disciplines_repository =  DisciplinesRepository(conn)

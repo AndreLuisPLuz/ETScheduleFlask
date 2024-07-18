@@ -1,5 +1,4 @@
 from typing import List
-from textblob import TextBlob
 
 class HardSoftSkillsGraph:
     def __init__(self, students_avaliation_repository, profile_repository) -> None:
@@ -39,7 +38,7 @@ class HardSoftSkillsGraph:
                 if comment:
                     formatted_comment = comment.lower().replace(",", "").replace(".", "")
                     if len(formatted_comment) < 2: continue
-                    # self.verify_soft_skills(formatted_comment)
+                    self.verify_soft_skills(formatted_comment)
                     self.verify_hard_skills(formatted_comment)
                     
             if profile[3]:
@@ -290,33 +289,3 @@ class HardSoftSkillsGraph:
 
         return polarity
                         
-                        
-# Descrição Positiva:
-# "John é um estudante de TI habilidoso e eficiente, entregando consistentemente código e soluções de alta qualidade."
-# Descrição Muito Positiva:
-
-# "O entendimento de Sarah em algoritmos complexos é excepcional, e suas habilidades de resolução de problemas são exemplares."
-# Descrição Negativa:
-
-# "O trabalho de David na otimização de banco de dados foi ineficiente e inconsistente, resultando em problemas de desempenho na aplicação."
-# Descrição Muito Negativa:
-
-# "A abordagem de Emily em cibersegurança foi inadequada e ineficaz, resultando em várias violações de segurança."
-# Descrição Mista:
-
-# "O desempenho de Michael no desenvolvimento de software tem sido positivo, mas suas habilidades de comunicação precisam de melhoria."
-# Descrição Crítica:
-
-# "A falta de atenção aos detalhes de Alex na codificação tem sido problemática, causando erros frequentes na aplicação."
-# Descrição Neutra:
-
-# "Emma mostrou um entendimento adequado de conceitos de redes, mas seu progresso poderia se beneficiar de mais experiência prática."
-# Descrição Geralmente Positiva:
-
-# "O entendimento de Tom em conceitos de computação em nuvem é notável, e suas contribuições para a equipe têm sido confiáveis."
-
-        
-            
-        
-      
-        

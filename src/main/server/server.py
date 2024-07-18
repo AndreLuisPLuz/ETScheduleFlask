@@ -1,8 +1,6 @@
-# Fazendo um servidor em Flask
 from flask import Flask
-from src.main.routes.routes import routes_bp
+from src.main.routes.graphs_routes import  graphs_routes_bp
 
 app = Flask(__name__)
 
-app.register_blueprint(routes_bp)
-#Registra as rotas relacionada a essa blueprint
+app.register_blueprint(graphs_routes_bp)
