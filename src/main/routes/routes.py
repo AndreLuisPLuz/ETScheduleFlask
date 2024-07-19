@@ -4,7 +4,7 @@ from flask_jwt_extended  import jwt_required
 #jsonify: tranformas as respostas em json para o usuário
 #Blueprint: ajuda a dar um nome bacana para a rotas para saber melhor a que ela se refere
 
-graphs_routes_bp = Blueprint("graphs_routes", __name__)
+routes_bp = Blueprint("routes", __name__)
 
 # Importação de Controllers
 
@@ -27,7 +27,7 @@ from src.models.repositories.users_repository import UsersRepository
 from src.models.settings.db_connection_handler import db_connection_handler
 
 
-@graphs_routes_bp.route("/first_access", methods=["POST"])
+@routes_bp.route("/first_access", methods=["POST"])
 def aaaaa():
     conn = db_connection_handler.get_connection()
     users_repository = UsersRepository(conn)
@@ -38,7 +38,7 @@ def aaaaa():
     return jsonify(response["body"]), response["status_code"]
 
 
-@graphs_routes_bp.route("/login", methods=["POST"])
+@routes_bp.route("/login", methods=["POST"])
 def bbbbb():
     conn = db_connection_handler.get_connection()
     users_repository = UsersRepository(conn)
@@ -49,7 +49,7 @@ def bbbbb():
     return jsonify(response["body"]), response["status_code"]
 
 
-@graphs_routes_bp.route("/hard-soft-skills/<ProfileId>", methods=["GET"])
+@routes_bp.route("/hard-soft-skills/<ProfileId>", methods=["GET"])
 @jwt_required()
 def cccccc(ProfileId):
     conn = db_connection_handler.get_connection()
@@ -61,7 +61,7 @@ def cccccc(ProfileId):
 
     return jsonify(response["body"]), response["status_code"]
 
-@graphs_routes_bp.route("/disciplines-average/<ProfileId>", methods=["GET"])
+@routes_bp.route("/disciplines-average/<ProfileId>", methods=["GET"])
 @jwt_required()
 def dddddd(ProfileId):
     conn = db_connection_handler.get_connection()

@@ -65,85 +65,32 @@ class HardSoftSkillsGraph:
 
     def verify_soft_skills(self, comment: str) -> None:
         communication = [
-            "verbal communication",
-            "nonverbal communication",
-            "active listening",
-            "clear expression of ideas",
-            "persuasion",
-            "negotiation",
-            "interpersonal communication",
-            "constructive feedback",
-            "written communication",
-            "body language",
-            "eloquence",
-            "empathy",
-            "assertiveness",
-            "effective communication",
-            "mutual understanding"
+            "verbal communication", "nonverbal communication", "active listening", "clear expression of ideas", "persuasion", "negotiation", 
+            "interpersonal communication", "constructive feedback", "written communication", "body language", "eloquence", "empathy",
+            "assertiveness", "effective communication", "mutual understanding"
         ]
 
         initiative = [
-            "proactivity",
-            "leadership",
-            "autonomy",
-            "decision making",
-            "responsibility",
-            "creativity",
-            "innovation",
-            "perseverance",
-            "strategic vision",
-            "risk-taking",
-            "entrepreneurial mindset",
-            "independence",
-            "self-motivation",
-            "problem solving",
-            "boldness"
+            "proactivity", "leadership", "autonomy", "decision making", "responsibility", "creativity", "innovation", "perseverance", "strategic vision",
+            "risk-taking", "entrepreneurial mindset", "independence", "self-motivation", "problem solving", "boldness"
         ]
 
         teamwork = [
-            "collaboration",
-            "cooperation",
-            "empathy",
-            "trust",
-            "effective communication",
-            "flexibility",
-            "commitment",
-            "mutual support",
-            "respect",
-            "diversity",
-            "synergy",
-            "harmony",
-            "shared leadership",
-            "constructive feedback",
-            "conflict management"
+            "collaboration", "cooperation", "empathy", "trust", "effective communication", "flexibility", "commitment", "mutual support",
+            "respect", "diversity", "synergy", "harmony", "shared leadership", "constructive feedback", "conflict management"
         ]
 
         leadership = [
-            "leadership skills",
-            "team motivation",
-            "strategic vision",
-            "inspiration",
-            "decision making",
-            "delegation",
-            "positive influence",
-            "responsibility",
-            "charisma",
-            "results orientation",
-            "ethics",
-            "communication skills",
+            "leadership skills", "team motivation", "strategic vision", "inspiration", "decision making", "delegation", "positive influence",
+            "responsibility", "charisma", "results orientation", "ethics", "communication skills",
             "adaptability",
             "change management",
             "ability to inspire trust"
         ]
 
         organization = [
-            "planning",
-            "prioritization",
-            "discipline",
-            "efficiency",
-            "time management",
-            "personal organization",
-            "meeting deadlines",
+            "planning", "prioritization", "discipline", "efficiency",
+            "time management", "personal organization", "meeting deadlines",
             "structuring",
             "focus",
             "resource management",

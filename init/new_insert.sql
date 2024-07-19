@@ -151,3 +151,33 @@ VALUES
 
 
 
+
+INSERT INTO students_avaliation (discipline_id, student_id, comment)
+VALUES
+    (1, 4, 'good verbal communication active listening persuasion negotiation'), -- 4 communication
+    (1, 4, 'exceptional planning prioritization discipline'), -- 6  organization
+    (1, 4, ''),
+    (1, 4, ''),
+    (1, 4, ''),
+    (1, 4, ''),
+    (1, 4, ''),
+    (1, 4, ''),
+    (1, 4, ''),
+    (1, 4, ''),
+    (1, 4, ''),
+    (1, 4, ''),
+    (1, 4, ''),
+    (1, 4, ''),
+    (1, 4, ''),
+    (1, 4, ''),
+    (1, 4, ''),
+    (1, 4, ''),
+    (1, 4, ''),
+    (1, 4, ''),
+    (1, 4, ''),
+    (1, 4, ''),
+    (1, 4, ''),
+    (1, 4, ''),
+    (1, 4, ''),
+    (1, 4, ''),
+    (1, 4, '');
