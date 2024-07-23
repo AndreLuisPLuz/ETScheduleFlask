@@ -100,18 +100,34 @@ class HardSoftSkillsGraph:
             "systematization"
         ]
         
-        for word in comment:
-            if word == '': continue
-            if word in communication:
-                self.__soft_skills['Communication'] += self.verify_polarity(' '.join(comment))
-            if word in teamwork:
-                self.__soft_skills['Teamwork'] += self.verify_polarity(' '.join(comment))
-            if word in initiative:
-                self.__soft_skills['Initiative'] += self.verify_polarity(' '.join(comment))
-            if word in leadership:
-                self.__soft_skills['Leadership'] += self.verify_polarity(' '.join(comment))
-            if word in organization:
-                self.__soft_skills['Organization'] += self.verify_polarity(' '.join(comment))
+        keyword_lists = {
+            'Communication': communication,
+            'Teamwork': initiative,
+            'Initiative': teamwork,
+            'Leadership': leadership,
+            'Organization': organization
+        }
+        
+        for skill_key, skill_list in keyword_lists.items():
+            for skill in skill_list:
+                if skill in comment:
+                    for skill_entry in self.__soft_skills:
+                        if skill_entry['competence_name'] == skill_key:
+                            skill_entry['value'] += self.verify_polarity(comment)
+                            break
+        
+        # for word in comment:
+        #     if word == '': continue
+        #     if word in communication:
+        #         self.__soft_skills['Communication'] += self.verify_polarity(' '.join(comment))
+        #     if word in teamwork:
+        #         self.__soft_skills['Teamwork'] += self.verify_polarity(' '.join(comment))
+        #     if word in initiative:
+        #         self.__soft_skills['Initiative'] += self.verify_polarity(' '.join(comment))
+        #     if word in leadership:
+        #         self.__soft_skills['Leadership'] += self.verify_polarity(' '.join(comment))
+        #     if word in organization:
+        #         self.__soft_skills['Organization'] += self.verify_polarity(' '.join(comment))
     
     def verify_hard_skills(self, comment: str) -> None:
      
@@ -189,7 +205,6 @@ class HardSoftSkillsGraph:
                 if skill in comment:
                     for skill_entry in self.__hard_skills:
                         if skill_entry['competence_name'] == skill_key:
-                            # print(skill_key + skill)
                             skill_entry['value'] += self.verify_polarity(comment)
                             break
 

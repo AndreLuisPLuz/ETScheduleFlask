@@ -29,7 +29,7 @@ class DisciplinesAverageGraph:
                 course = self.__courses_repository.get_course_by_id(discipline[4])
                 competences = self.__competences_repository.get_competences_from_disciplines(discipline[0])
                 if not course: raise Exception("No Course Found")
-                if not competences: raise Exception("No Competences Found")
+                if not competences: continue
                 discipline_name = str(course[4])
 
                 competence_values = [] 

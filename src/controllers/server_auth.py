@@ -10,8 +10,6 @@ class ServerAuth:
         try:
             # Gerar hash da senha
             password_hash = generate_password_hash(body['password']).decode('utf-8')
-
-            print(password_hash)
             body['password'] = password_hash
 
             user_infos = { **body }
